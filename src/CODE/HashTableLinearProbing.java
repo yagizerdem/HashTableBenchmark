@@ -57,7 +57,10 @@ public class HashTableLinearProbing extends  BaseDictionary {
                 if (key.equals(this.store[index].getImdbId()))
                     found = true; // Key found
                 else // Follow probe sequence
+                {
                     index = (index + 1) % this.store.length; // Linear probing
+                    this.collisionCount++;
+                }
             }
             else // Skip entries that were removed
             {
@@ -142,8 +145,10 @@ public class HashTableLinearProbing extends  BaseDictionary {
 
     @Override
     public void clear() {
-        this.size = this.INITIAL_SIZE;
-        this.store = new HashTableEntry[this.INITIAL_SIZE];
+        this.size = this.getNextPrimeNumber(this.INITIAL_SIZE);
+        this.store = new HashTableEntry[this.size];
+        this.entryCount = 0;
+        this.collisionCount = 0;
     }
 
 

@@ -12,8 +12,6 @@ public class Main {
         LoadData.LoadSearchTest();
 
 
-
-
         SwingUtilities.invokeLater(new Runnable() {
             public void run() {
                 new MainFrame();

@@ -11,6 +11,7 @@ public abstract class BaseDictionary implements  DictionaryInterface<String,Hash
     public HashTableEntry[] store = null;
     public SelectedHashFunction selectedHashFunction;
     public int entryCount = 0;
+    public int collisionCount = 0;
 
     public BaseDictionary(float LoadFactor, SelectedHashFunction selectedHashFunction) {
         this.size = this.getNextPrimeNumber(this.INITIAL_SIZE);

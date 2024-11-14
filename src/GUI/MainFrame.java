@@ -75,21 +75,6 @@ public class MainFrame extends JFrame {
         appStatelabel.setText("app state : idle");
         appStatelabel.setBounds(new Rectangle(200, 0 ,400 ,20));
 
-        loadDataBtn.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if(SD.selectedHashTable == null){
-                    appStatelabel.setText("app state : error (selected hash table is null)");
-                }else{
-                    appStatelabel.setText("app state : loading data");
-                    new LoadDataWorker(appStatelabel).execute();
-                }
-
-            }
-        });
-
-
-
 
         linerProbingLoadFactor50btnSSF.addActionListener(new ActionListener() {
             @Override
@@ -272,6 +257,21 @@ public class MainFrame extends JFrame {
                     appStatelabel.setText("app state : calculating");
                     new ListMediaItemOn5platform(appStatelabel, textArea).execute();
                 }
+            }
+        });
+
+
+
+        loadDataBtn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if(SD.selectedHashTable == null){
+                    appStatelabel.setText("app state : error (selected hash table is null)");
+                }else{
+                    appStatelabel.setText("app state : loading data");
+                    new LoadDataWorker(appStatelabel ,textArea).execute();
+                }
+
             }
         });
 
