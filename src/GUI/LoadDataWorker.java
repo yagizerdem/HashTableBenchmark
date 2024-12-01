@@ -22,15 +22,15 @@ public  class LoadDataWorker extends SwingWorker<Void, Void> {
         SD.selectedHashTable.clear(); // clear old values
         LoadData.Load(); // load initial data to memory from driver
         // load data from driver
-        long startTime = System.currentTimeMillis();
+        long startTime = System.nanoTime();
         for(int i = 0 ; i < SD.hashTableEntryList.size() ; i++){
             HashTableEntry entry = SD.hashTableEntryList.get(i);
             SD.selectedHashTable.add(entry.getImdbId() , entry);
         }
-        long endTime = System.currentTimeMillis();
+        long endTime = System.nanoTime();
         // Calculate the elapsed time in milliseconds
         long elapsedTime = endTime - startTime;
-        System.out.println("Elapsed time for 1000 searches: " + elapsedTime + " milliseconds");
+        System.out.println("Elapsed time for 1000 searches: " + elapsedTime + " ns");
         this.elapsedTime = elapsedTime;
         this.collisionCount = SD.selectedHashTable.collisionCount;
         return null;

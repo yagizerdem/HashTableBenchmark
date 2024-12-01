@@ -18,12 +18,12 @@ public  class BenchMark1000SearchWorker extends SwingWorker<Void, Void> {
     protected Void doInBackground() throws Exception {
         // Simulate loading data (this runs on a background thread)
 
-        long startTime = System.currentTimeMillis();
+        long startTime = System.nanoTime();
         for(int i = 0; i < SD.SearchTextImdbId.size() ; i++){
             String key = SD.SearchTextImdbId.get(i);
             SD.selectedHashTable.getValue(key);
         }
-        long endTime = System.currentTimeMillis();
+        long endTime = System.nanoTime();
         // Calculate the elapsed time in milliseconds
         long elapsedTime = endTime - startTime;
         System.out.println("Elapsed time for 1000 searches: " + elapsedTime + " milliseconds");
@@ -35,7 +35,7 @@ public  class BenchMark1000SearchWorker extends SwingWorker<Void, Void> {
     protected void done() {
         // Update the UI after the background task completes (runs on EDT)
         appStatelabel.setText("App state: complete");
-        this.textArea.setText("elapsed time is : " + this.elapsedTime + " ms");
+        this.textArea.setText("elapsed time is : " + this.elapsedTime + " ns");
         System.out.println("done ..!!!");
     }
 }
